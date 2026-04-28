@@ -21,57 +21,43 @@ export default function Navbar({ email }: NavbarProps) {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+    <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-garden-sage/20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-500 shadow-sm shadow-blue-500/25">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <span className="text-lg font-bold text-gray-900 tracking-tight">
+          <div className="flex items-center gap-2">
+            <span className="text-xl">🌱</span>
+            <span className="text-lg font-bold text-garden-brown tracking-tight">
               HidupKita
             </span>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/dashboard" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="/dashboard" className="text-sm font-medium text-garden-brown hover:text-garden-sage transition-colors">
               Dashboard
             </a>
-            <a href="/today" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="/today" className="text-sm font-medium text-garden-brown hover:text-garden-sage transition-colors">
               Hari Ini
             </a>
-            <a href="/goals" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="/goals" className="text-sm font-medium text-garden-brown hover:text-garden-sage transition-colors">
               Goals
             </a>
-            <a href="/planner" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="/planner" className="text-sm font-medium text-garden-brown hover:text-garden-sage transition-colors">
               Planner
             </a>
           </div>
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
-            <span className="hidden sm:block text-sm text-gray-500 truncate max-w-[200px]">
+            <span className="hidden sm:block text-sm text-garden-brown-light truncate max-w-[150px]">
               {email}
             </span>
             <button
               id="logout-button"
               onClick={handleLogout}
               disabled={loggingOut}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-medium text-gray-600 bg-gray-100/80 transition-all duration-200 hover:bg-gray-200/80 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl text-sm font-medium text-garden-brown bg-white border border-garden-sage/30 transition-all duration-200 hover:bg-garden-sage-light hover:text-garden-sage focus:outline-none focus:ring-2 focus:ring-garden-sage/50 disabled:opacity-50 shadow-sm"
             >
               <svg
                 className="w-4 h-4"

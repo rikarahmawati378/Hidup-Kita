@@ -129,31 +129,31 @@ export default function PlannerClient({
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Date Picker Card */}
-      <div className="bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm">
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Pilih Tanggal Rencana
+      <div className="bg-white rounded-3xl border border-garden-sage/10 p-8 shadow-xl shadow-garden-sage/5 border-l-8 border-l-garden-sage animate-in slide-in-from-left-4">
+        <label className="block text-sm font-bold text-garden-brown mb-3 ml-1">
+          📅 Pilih Tanggal Rencana
         </label>
         <input
           type="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
-          className="px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+          className="w-full sm:w-auto px-6 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown font-bold text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Form Tambah Kegiatan */}
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm lg:sticky lg:top-24">
-            <h2 className="text-lg font-semibold text-gray-900 mb-5">
-              Tambah Kegiatan
+          <div className="bg-white rounded-3xl border border-garden-sage/10 p-8 shadow-xl shadow-garden-sage/5 lg:sticky lg:top-24 border-t-8 border-t-garden-sage animate-in slide-in-from-bottom-4">
+            <h2 className="text-xl font-bold text-garden-brown mb-6 flex items-center gap-2">
+              <span>📝</span> Tambah Rencana
             </h2>
-            <form onSubmit={handleAdd} className="space-y-4">
+            <form onSubmit={handleAdd} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Jam
+                <label className="block text-sm font-bold text-garden-brown mb-2 ml-1">
+                  Jam ⏰
                 </label>
                 <input
                   type="text"
@@ -161,12 +161,12 @@ export default function PlannerClient({
                   onChange={(e) => setJam(e.target.value)}
                   placeholder="06:30"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                  className="w-full px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm font-mono focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Deskripsi
+                <label className="block text-sm font-bold text-garden-brown mb-2 ml-1">
+                  Deskripsi 🌿
                 </label>
                 <input
                   type="text"
@@ -174,17 +174,17 @@ export default function PlannerClient({
                   onChange={(e) => setDeskripsi(e.target.value)}
                   placeholder="Hafalan Grammar"
                   required
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                  className="w-full px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Tag Goal Kecil
+                <label className="block text-sm font-bold text-garden-brown mb-2 ml-1">
+                  Tag Goal Kecil 🎯
                 </label>
                 <select
                   value={goalKecilId}
                   onChange={(e) => setGoalKecilId(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                  className="w-full px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner cursor-pointer"
                 >
                   <option value="">-- Tanpa Tag --</option>
                   {goalKecilList.map((g) => (
@@ -197,9 +197,9 @@ export default function PlannerClient({
               <button
                 type="submit"
                 disabled={loadingSubmit || !jam || !deskripsi}
-                className="w-full mt-2 py-2.5 rounded-xl bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 disabled:opacity-50 transition-all shadow-sm shadow-blue-500/25"
+                className="w-full mt-4 py-4 rounded-2xl bg-garden-sage text-white text-sm font-bold hover:bg-green-700 disabled:opacity-50 transition-all shadow-md shadow-garden-sage/20 transform hover:scale-[1.02] active:scale-[0.98]"
               >
-                {loadingSubmit ? "Menyimpan..." : "Tambah Kegiatan"}
+                {loadingSubmit ? "Menyimpan..." : "Simpan Rencana ✨"}
               </button>
             </form>
           </div>
@@ -207,63 +207,51 @@ export default function PlannerClient({
 
         {/* List Kegiatan */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-2xl border border-gray-200/60 p-6 shadow-sm min-h-[400px]">
-            <h2 className="text-lg font-semibold text-gray-900 mb-5 border-b border-gray-100 pb-4">
-              Rencana untuk {displayDate}
+          <div className="bg-white rounded-3xl border border-garden-sage/10 p-8 shadow-xl shadow-garden-sage/5 min-h-[500px]">
+            <h2 className="text-xl font-bold text-garden-brown mb-6 border-b border-garden-sage/10 pb-5 flex items-center gap-2">
+              <span>📅</span> Rencana untuk {displayDate}
             </h2>
 
             {loadingList ? (
-              <div className="flex justify-center items-center h-48">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-garden-sage"></div>
               </div>
             ) : kegiatanList.length === 0 ? (
-              <div className="text-center py-16 border-2 border-dashed border-gray-200 rounded-xl bg-gray-50/50">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 mb-3">
-                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <div className="text-center py-24 border-2 border-dashed border-garden-sage/20 rounded-3xl bg-garden-sage-light/10">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4 shadow-sm border border-garden-sage/5 text-3xl">
+                  🍃
                 </div>
-                <p className="text-gray-500 text-sm">
+                <p className="text-garden-brown font-semibold">
                   Belum ada kegiatan yang direncanakan.
                 </p>
-                <p className="text-gray-400 text-xs mt-1">
-                  Mulai tambahkan jadwal Anda di form sebelah.
+                <p className="text-garden-brown-light text-sm mt-2">
+                  Mulai petualangan harimu dengan mengisi form di sebelah.
                 </p>
               </div>
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {kegiatanList.map((keg) => (
                   <div
                     key={keg.id}
-                    className="flex items-start gap-4 p-4 rounded-xl border border-gray-100 bg-gray-50/30 hover:bg-white hover:shadow-sm hover:border-gray-200 transition-all group"
+                    className="flex items-start gap-5 p-5 rounded-2xl border border-garden-sage/5 bg-garden-sage-light/20 hover:bg-white hover:shadow-lg hover:shadow-garden-sage/5 hover:border-garden-sage/20 transition-all duration-300 group"
                   >
-                    <div className="flex-shrink-0 mt-0.5 text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                    <div className="flex-shrink-0 mt-0.5 text-sm font-black text-garden-sage bg-white px-4 py-2 rounded-xl border border-garden-sage/10 shadow-sm font-mono">
                       {keg.jam}
                     </div>
                     <div className="flex-1 pt-1">
-                      <p className="text-gray-900 font-medium leading-tight">
+                      <p className="text-garden-brown font-bold leading-tight text-lg">
                         {keg.deskripsi}
                       </p>
                       {keg.goal_kecil?.nama && (
-                        <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-600">
-                          <svg
-                            className="w-3.5 h-3.5 text-amber-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                            />
-                          </svg>
+                        <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-[11px] font-bold text-garden-sage border border-garden-sage/10 shadow-sm">
+                          <span className="text-amber-500">🎯</span>
                           {keg.goal_kecil.nama}
                         </div>
                       )}
                     </div>
                     <button
                       onClick={() => handleDelete(keg.id)}
-                      className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200"
+                      className="p-2.5 text-garden-brown-light hover:text-red-500 hover:bg-red-50 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300"
                       title="Hapus Kegiatan"
                     >
                       <svg

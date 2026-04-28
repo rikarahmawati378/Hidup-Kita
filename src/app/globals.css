@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --foreground: #111827;
-  --background: #f9fafb;
+  --foreground: #4A3F35;
+  --background: #FFF8F0;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: #4A3F35;
+  background: linear-gradient(to bottom, #FFF8F0, #F3F7F2);
+  min-height: 100vh;
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

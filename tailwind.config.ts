@@ -16,6 +16,14 @@ const config: Config = {
           light: "#60A5FA",
           dark: "#2563EB",
         },
+        garden: {
+          'bg': '#FFF8F0',
+          'sage': '#9CAF88',
+          'sage-light': '#F3F7F2',
+          'peach': '#FADADD',
+          'brown': '#4A3F35',
+          'brown-light': '#8B7E74'
+        }
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],

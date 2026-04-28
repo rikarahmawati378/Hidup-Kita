@@ -236,140 +236,94 @@ export default function TodayClient({
   };
 
   return (
-    <div className="space-y-8 relative">
+    <div className="space-y-10 relative">
       {/* Toast Notification */}
       <div
-        className={`fixed top-20 right-4 z-50 transition-all duration-300 transform ${
-          toast.show ? "translate-x-0 opacity-100" : "translate-x-[120%] opacity-0"
+        className={`fixed top-24 right-4 z-[60] transition-all duration-500 transform ${
+          toast.show ? "translate-x-0 opacity-100 scale-100" : "translate-x-[120%] opacity-0 scale-90"
         }`}
       >
-        <div className="bg-blue-600 text-white px-6 py-3.5 rounded-xl shadow-lg flex items-center gap-3">
-          <div className="bg-blue-500 rounded-full p-1">
-            <svg
-              className="w-4 h-4 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={3}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
+        <div className="bg-garden-peach/95 backdrop-blur-md text-garden-brown px-8 py-5 rounded-3xl shadow-2xl border-2 border-garden-peach/50 flex items-center gap-4 min-w-[300px]">
+          <div className="bg-white rounded-full p-2 shadow-sm text-2xl">
+            ✨
           </div>
-          <span className="font-medium text-sm">{toast.message}</span>
+          <span className="font-extrabold text-sm leading-snug">{toast.message}</span>
         </div>
       </div>
 
-      <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-          Hari Ini
+      <div className="mb-10 animate-in fade-in slide-in-from-top-4 duration-700">
+        <h1 className="text-3xl sm:text-4xl font-black text-garden-brown tracking-tight">
+          📅 Hari Ini
         </h1>
-        <p className="text-gray-500 mt-2 text-sm sm:text-base font-medium">
+        <p className="text-garden-brown-light mt-3 text-lg font-bold flex items-center gap-2">
+          <span className="w-8 h-0.5 bg-garden-sage rounded-full"></span>
           {displayDate}
         </p>
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-20">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <div className="flex justify-center py-24">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-garden-sage"></div>
         </div>
       ) : (
         <>
           {/* Daftar Rencana Aktif */}
-          <div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 border-b border-gray-100 pb-2">
-              Rencana Aktif
+          <div className="animate-in fade-in duration-1000">
+            <h2 className="text-xl font-bold text-garden-brown mb-6 border-b-2 border-garden-sage/10 pb-3 flex items-center gap-2">
+              <span>🌿</span> Rencana Aktif
             </h2>
             {activeList.length === 0 ? (
-              <div className="text-center py-12 border-2 border-dashed border-gray-200 rounded-xl bg-white shadow-sm">
-                <p className="text-gray-500 text-sm mb-4">
+              <div className="text-center py-20 border-2 border-dashed border-garden-sage/20 rounded-3xl bg-white/50 shadow-sm">
+                <div className="text-4xl mb-4">🍃</div>
+                <p className="text-garden-brown-light font-bold mb-6">
                   Belum ada rencana aktif untuk hari ini.
                 </p>
                 <Link
                   href="/planner"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors shadow-sm shadow-blue-500/25"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-garden-sage text-white text-sm font-bold hover:bg-green-700 transition-all shadow-md shadow-garden-sage/20 transform hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  Yuk rencanakan di Planner!
+                  Yuk rencanakan di Planner! 📝
                 </Link>
               </div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {activeList.map((keg) => (
                   <div
                     key={keg.id}
-                    className="bg-white rounded-2xl border border-gray-200/60 p-5 shadow-sm hover:shadow-md transition-shadow"
+                    className="bg-white rounded-3xl border border-garden-sage/10 p-6 shadow-xl shadow-garden-sage/5 hover:shadow-garden-sage/10 transition-all duration-300 border-l-[12px] border-l-garden-sage"
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 mt-0.5 text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                      <div className="flex items-start gap-5">
+                        <div className="flex-shrink-0 mt-0.5 text-sm font-black text-garden-sage bg-garden-sage-light px-4 py-2 rounded-xl border border-garden-sage/10 shadow-sm font-mono">
                           {keg.jam}
                         </div>
                         <div>
-                          <p className="text-gray-900 font-medium leading-tight">
+                          <p className="text-garden-brown font-black leading-tight text-xl">
                             {keg.deskripsi}
                           </p>
                           {keg.goal_kecil?.nama && (
-                            <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-600">
-                              <svg
-                                className="w-3.5 h-3.5 text-amber-500"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-                                />
-                              </svg>
+                            <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-garden-sage-light/30 text-[11px] font-black text-garden-sage border border-garden-sage/10 shadow-sm">
+                              <span className="text-amber-500">🎯</span>
                               {keg.goal_kecil.nama}
                             </div>
                           )}
                         </div>
                       </div>
-                      <div className="flex gap-2 sm:ml-auto">
+                      <div className="flex gap-3 sm:ml-auto">
                         <button
                           onClick={() => toggleReplaceForm(keg)}
                           disabled={submittingId === keg.id}
-                          className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 hover:text-gray-900 transition-colors flex items-center gap-2"
+                          className="px-5 py-3 rounded-2xl text-sm font-bold text-garden-brown bg-garden-peach/30 hover:bg-garden-peach/50 transition-all flex items-center gap-2 shadow-sm transform active:scale-95"
                         >
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                            />
-                          </svg>
+                          <span className="text-lg">🔄</span>
                           Ganti
                         </button>
                         <button
                           onClick={() => handleSelesai(keg)}
                           disabled={submittingId === keg.id}
-                          className="px-4 py-2 rounded-xl text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-colors shadow-sm shadow-blue-500/25 flex items-center gap-2"
+                          className="px-6 py-3 rounded-2xl text-sm font-bold text-white bg-garden-sage hover:bg-green-700 transition-all shadow-md shadow-garden-sage/20 flex items-center gap-2 transform active:scale-95"
                         >
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
+                          <span className="text-lg">✅</span>
                           Selesai
                         </button>
                       </div>
@@ -377,18 +331,18 @@ export default function TodayClient({
 
                     {/* Inline Form Ganti */}
                     {replaceForms[keg.id] && (
-                      <div className="mt-5 pt-5 border-t border-gray-100">
-                        <h4 className="text-sm font-semibold text-gray-700 mb-3">
-                          Kegiatan Aktual (Ganti Rencana)
+                      <div className="mt-8 pt-8 border-t border-garden-sage/10 animate-in slide-in-from-top-4">
+                        <h4 className="text-sm font-black text-garden-brown mb-5 flex items-center gap-2">
+                          <span>🔄</span> Kegiatan Aktual (Ganti Rencana)
                         </h4>
-                        <div className="flex flex-col md:flex-row gap-3">
+                        <div className="flex flex-col lg:flex-row gap-4">
                           <input
                             type="text"
                             value={replaceForms[keg.id].jam}
                             onChange={(e) =>
                               handleReplaceChange(keg.id, "jam", e.target.value)
                             }
-                            className="w-full md:w-24 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                            className="w-full lg:w-28 px-4 py-3 rounded-xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown font-bold text-sm focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner font-mono"
                             placeholder="Jam"
                           />
                           <input
@@ -401,8 +355,8 @@ export default function TodayClient({
                                 e.target.value
                               )
                             }
-                            className="w-full md:flex-1 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
-                            placeholder="Deskripsi kegiatan aktual"
+                            className="w-full lg:flex-1 px-4 py-3 rounded-xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown font-bold text-sm focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
+                            placeholder="Apa yang sebenarnya kamu lakukan? 🌿"
                           />
                           <select
                             value={replaceForms[keg.id].goal_kecil_id}
@@ -413,7 +367,7 @@ export default function TodayClient({
                                 e.target.value
                               )
                             }
-                            className="w-full md:w-48 px-3 py-2 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                            className="w-full lg:w-56 px-4 py-3 rounded-xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown font-bold text-sm focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner cursor-pointer"
                           >
                             <option value="">-- Tanpa Tag --</option>
                             {goalKecilList.map((g) => (
@@ -429,11 +383,11 @@ export default function TodayClient({
                               !replaceForms[keg.id].deskripsi ||
                               !replaceForms[keg.id].jam
                             }
-                            className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors flex-shrink-0 disabled:opacity-50"
+                            className="px-6 py-3 bg-garden-brown text-white text-sm font-bold rounded-xl hover:bg-black transition-all flex-shrink-0 disabled:opacity-50 transform active:scale-95 shadow-lg shadow-black/10"
                           >
                             {submittingId === keg.id
                               ? "Menyimpan..."
-                              : "Simpan & Selesai"}
+                              : "Simpan & Selesai ✨"}
                           </button>
                         </div>
                       </div>
@@ -446,38 +400,26 @@ export default function TodayClient({
 
           {/* Riwayat Selesai */}
           {completedList.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-lg font-semibold text-gray-500 mb-4 border-b border-gray-200/60 pb-2">
-                Riwayat Selesai Hari Ini
+            <div className="mt-16 pb-12 animate-in fade-in duration-1000 delay-300">
+              <h2 className="text-xl font-bold text-garden-brown-light mb-6 border-b border-garden-sage/10 pb-3 flex items-center gap-2">
+                <span>🏆</span> Riwayat Selesai Hari Ini
               </h2>
-              <div className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {completedList.map((keg) => (
                   <div
                     key={keg.id}
-                    className="flex items-start gap-4 p-4 rounded-xl border border-gray-200/60 bg-gray-50 opacity-75"
+                    className="flex items-start gap-4 p-5 rounded-3xl border border-garden-sage/5 bg-white/40 opacity-60 hover:opacity-100 transition-all duration-300 group shadow-sm"
                   >
-                    <div className="flex-shrink-0 mt-0.5 text-sm font-semibold text-gray-500 bg-gray-200/50 px-3 py-1.5 rounded-lg border border-gray-200">
+                    <div className="flex-shrink-0 mt-0.5 text-xs font-bold text-garden-brown-light bg-garden-sage-light/50 px-3 py-1.5 rounded-xl border border-garden-sage/10 font-mono">
                       {keg.jam}
                     </div>
                     <div className="flex-1 pt-1">
-                      <p className="text-gray-500 font-medium leading-tight line-through">
+                      <p className="text-garden-brown font-bold leading-tight line-through">
                         {keg.deskripsi}
                       </p>
                       {keg.goal_kecil?.nama && (
-                        <div className="mt-2 inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-gray-200/50 text-xs font-medium text-gray-500">
-                          <svg
-                            className="w-3.5 h-3.5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
+                        <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white text-[10px] font-bold text-garden-sage border border-garden-sage/5 shadow-sm">
+                          <span>✨</span>
                           {keg.goal_kecil.nama}
                         </div>
                       )}

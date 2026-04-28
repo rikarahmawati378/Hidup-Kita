@@ -66,47 +66,35 @@ export default function GoalsList({
       {/* Tombol Tambah */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-500 text-white text-sm font-medium transition-all duration-200 hover:bg-blue-600 shadow-sm shadow-blue-500/25"
+        className="mb-8 inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-garden-sage text-white text-sm font-bold transition-all duration-200 hover:bg-green-700 shadow-md shadow-garden-sage/20 transform hover:scale-[1.02] active:scale-[0.98]"
       >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 4v16m8-8H4"
-          />
-        </svg>
+        <span className="text-lg">🌱</span>
         Tambah Goal Besar
       </button>
 
       {/* Inline Form / Modal */}
       {isModalOpen && (
-        <div className="mb-8 p-6 bg-white rounded-2xl border border-gray-200/60 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Goal Besar Baru
+        <div className="mb-10 p-8 bg-white rounded-3xl border border-garden-sage/10 shadow-xl shadow-garden-sage/5 animate-in slide-in-from-top-4">
+          <h2 className="text-xl font-bold text-garden-brown mb-6 flex items-center gap-2">
+            <span>🌿</span> Goal Besar Baru
           </h2>
-          <form onSubmit={handleAdd} className="space-y-4">
+          <form onSubmit={handleAdd} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <label className="block text-sm font-bold text-garden-brown mb-2 ml-1">
                 Nama Goal
               </label>
               <input
                 type="text"
                 value={nama}
                 onChange={(e) => setNama(e.target.value)}
-                placeholder="Contoh: Belajar Next.js"
+                placeholder="Contoh: Belajar Berkebun"
                 required
-                className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                className="w-full px-4 py-3 rounded-xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                Target XP
+              <label className="block text-sm font-bold text-garden-brown mb-2 ml-1">
+                Target XP ✨
               </label>
               <input
                 type="number"
@@ -114,23 +102,23 @@ export default function GoalsList({
                 onChange={(e) => setTargetXp(Number(e.target.value))}
                 min="1"
                 required
-                className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+                className="w-full px-4 py-3 rounded-xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all"
               />
             </div>
-            <div className="flex gap-3 justify-end mt-4">
+            <div className="flex gap-4 justify-end mt-6">
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                className="px-5 py-2.5 text-sm font-bold text-garden-brown-light hover:text-garden-brown transition-colors"
               >
                 Batal
               </button>
               <button
                 type="submit"
                 disabled={loading || !nama}
-                className="px-4 py-2 rounded-xl bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 disabled:opacity-50 transition-colors"
+                className="px-6 py-2.5 rounded-xl bg-garden-sage text-white text-sm font-bold hover:bg-green-700 disabled:opacity-50 transition-all shadow-md shadow-garden-sage/20"
               >
-                {loading ? "Menyimpan..." : "Simpan"}
+                {loading ? "Menyimpan..." : "Simpan Goal"}
               </button>
             </div>
           </form>
@@ -138,20 +126,20 @@ export default function GoalsList({
       )}
 
       {/* Daftar Kartu Goal */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {goals.map((goal) => (
           <Link
             key={goal.id}
             href={`/goals/${goal.id}`}
-            className="block bg-white rounded-2xl border border-gray-200/60 p-5 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-300 relative group"
+            className="block bg-white rounded-3xl border border-garden-sage/10 p-6 shadow-lg shadow-garden-sage/5 hover:shadow-garden-sage/10 hover:border-garden-sage/30 transition-all duration-300 relative group transform hover:-translate-y-1"
           >
-            <div className="flex justify-between items-start mb-3">
-              <h3 className="font-semibold text-gray-900 line-clamp-2 pr-8">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="font-bold text-garden-brown text-lg line-clamp-2 pr-8 leading-tight">
                 {goal.nama}
               </h3>
               <button
                 onClick={(e) => handleDelete(goal.id, e)}
-                className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200"
+                className="absolute top-5 right-5 p-2 text-garden-brown-light hover:text-red-500 hover:bg-red-50 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-200"
                 title="Hapus Goal"
               >
                 <svg
@@ -169,18 +157,21 @@ export default function GoalsList({
                 </svg>
               </button>
             </div>
-            <p className="text-xs font-medium text-blue-600 mb-4 bg-blue-50 w-fit px-2.5 py-1 rounded-md">
-              Target: {goal.target_xp} XP
-            </p>
+            
+            <div className="flex items-center gap-2 mb-6">
+               <span className="text-xs font-bold text-garden-sage bg-garden-sage-light px-3 py-1.5 rounded-full border border-garden-sage/10 shadow-sm">
+                Target: {goal.target_xp} ✨
+              </span>
+            </div>
 
             <div className="mt-auto">
-              <div className="flex justify-between text-xs text-gray-500 mb-1.5">
+              <div className="flex justify-between text-xs font-bold text-garden-brown-light mb-2 px-1">
                 <span>Progress</span>
-                <span>{goal.progress || 0}%</span>
+                <span className="text-garden-sage">{goal.progress || 0}%</span>
               </div>
-              <div className="w-full bg-gray-100 rounded-full h-2">
+              <div className="w-full bg-garden-sage-light rounded-full h-2.5 overflow-hidden shadow-inner">
                 <div
-                  className="bg-blue-500 h-2 rounded-full transition-all duration-500"
+                  className="bg-gradient-to-r from-garden-sage to-green-400 h-2.5 rounded-full transition-all duration-700 ease-out"
                   style={{ width: `${goal.progress || 0}%` }}
                 ></div>
               </div>
@@ -189,9 +180,13 @@ export default function GoalsList({
         ))}
 
         {goals.length === 0 && (
-          <div className="col-span-full py-12 text-center bg-white rounded-2xl border border-dashed border-gray-300">
-            <p className="text-gray-500 text-sm">
-              Belum ada Goal Besar. Silakan tambah goal pertamamu!
+          <div className="col-span-full py-20 text-center bg-white/50 rounded-3xl border-2 border-dashed border-garden-sage/20">
+            <div className="text-4xl mb-4">🎯</div>
+            <p className="text-garden-brown font-medium">
+              Belum ada Goal Besar. 
+            </p>
+            <p className="text-garden-brown-light text-sm mt-1">
+              Silakan tambah goal pertamamu untuk mulai berpetualang!
             </p>
           </div>
         )}

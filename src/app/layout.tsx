@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-garden-bg text-garden-brown`}>
         <LayoutWrapper>
           {children}
         </LayoutWrapper>

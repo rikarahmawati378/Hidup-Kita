@@ -56,60 +56,48 @@ export default function GoalKecilList({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200/60 shadow-sm p-6">
-      <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-        <svg
-          className="w-5 h-5 text-blue-500"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-          />
-        </svg>
-        Daftar Goal Kecil
+    <div className="bg-white rounded-3xl border border-garden-sage/10 shadow-xl shadow-garden-sage/5 p-8">
+      <h2 className="text-xl font-bold text-garden-brown mb-8 flex items-center gap-2">
+        <span className="text-2xl">🌱</span>
+        Langkah Kecil 🌿
       </h2>
 
       {/* Form Tambah Goal Kecil */}
-      <form onSubmit={handleAdd} className="mb-8 flex gap-3">
+      <form onSubmit={handleAdd} className="mb-10 flex flex-col sm:flex-row gap-4">
         <input
           type="text"
           value={nama}
           onChange={(e) => setNama(e.target.value)}
           placeholder="Tulis langkah kecil untuk mencapai goal ini..."
           required
-          className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
+          className="flex-1 px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
         />
         <button
           type="submit"
           disabled={loading || !nama.trim()}
-          className="px-5 py-2.5 rounded-xl bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 disabled:opacity-50 transition-colors whitespace-nowrap shadow-sm shadow-blue-500/25"
+          className="px-8 py-3 rounded-2xl bg-garden-sage text-white text-sm font-bold hover:bg-green-700 disabled:opacity-50 transition-all whitespace-nowrap shadow-md shadow-garden-sage/20 transform hover:scale-[1.02] active:scale-[0.98]"
         >
-          {loading ? "Menambah..." : "Tambah"}
+          {loading ? "Menambah..." : "Tambah Misi ✨"}
         </button>
       </form>
 
       {/* List Goal Kecil */}
-      <div className="space-y-3">
+      <div className="space-y-4">
         {goals.map((goal, index) => (
           <div
             key={goal.id}
-            className="flex items-center justify-between p-4 rounded-xl border border-gray-100 bg-gray-50/50 hover:bg-gray-50 transition-colors group"
+            className="flex items-center justify-between p-5 rounded-2xl border border-garden-sage/5 bg-garden-sage-light/20 hover:bg-garden-sage-light/40 transition-all duration-300 group shadow-sm"
           >
-            <div className="flex items-center gap-3">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-600 text-xs font-semibold">
+            <div className="flex items-center gap-4">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-garden-sage text-xs font-black shadow-sm border border-garden-sage/10">
                 {index + 1}
               </span>
-              <span className="text-gray-800 text-sm">{goal.nama}</span>
+              <span className="text-garden-brown font-semibold text-sm sm:text-base">{goal.nama}</span>
             </div>
             <button
               onClick={() => handleDelete(goal.id)}
-              className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200"
-              title="Hapus Goal Kecil"
+              className="p-2.5 text-garden-brown-light hover:text-red-500 hover:bg-red-50 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-200"
+              title="Hapus Misi"
             >
               <svg
                 className="w-4 h-4"
@@ -129,8 +117,12 @@ export default function GoalKecilList({
         ))}
 
         {goals.length === 0 && (
-          <div className="py-8 text-center text-gray-500 text-sm">
-            Belum ada goal kecil yang ditambahkan.
+          <div className="py-12 text-center bg-garden-sage-light/10 rounded-3xl border-2 border-dashed border-garden-sage/10">
+            <div className="text-3xl mb-3">🍃</div>
+            <p className="text-garden-brown-light text-sm font-medium">
+              Belum ada misi kecil untuk goal ini. 
+              <br/>Yuk buat satu!
+            </p>
           </div>
         )}
       </div>

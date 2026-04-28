@@ -44,11 +44,12 @@ export default async function GoalDetailPage({
 
   if (!goalBesar) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center flex-col">
-        <p className="text-gray-500 mb-4">Goal tidak ditemukan.</p>
+      <div className="min-h-screen bg-garden-bg flex items-center justify-center flex-col p-4 text-center">
+        <div className="text-6xl mb-6">🏜️</div>
+        <p className="text-garden-brown font-bold text-xl mb-4">Goal tidak ditemukan.</p>
         <Link
           href="/goals"
-          className="text-blue-500 hover:text-blue-600 font-medium text-sm"
+          className="text-garden-sage hover:text-green-700 font-bold text-sm bg-white px-6 py-3 rounded-2xl shadow-sm border border-garden-sage/10"
         >
           &larr; Kembali ke Daftar Goal
         </Link>
@@ -64,13 +65,13 @@ export default async function GoalDetailPage({
     .order("id", { ascending: true });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-garden-bg pb-20">
       <Navbar email={user.email ?? "Pengguna"} />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <Link
           href="/goals"
-          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors mb-6 group"
+          className="inline-flex items-center text-sm font-bold text-garden-brown-light hover:text-garden-sage transition-all mb-8 group"
         >
           <svg
             className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
@@ -81,7 +82,7 @@ export default async function GoalDetailPage({
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={3}
               d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
@@ -89,26 +90,32 @@ export default async function GoalDetailPage({
         </Link>
 
         {/* Header Goal Besar */}
-        <div className="mb-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/60 shadow-sm relative overflow-hidden">
+        <div className="mb-10 bg-white p-8 sm:p-12 rounded-[2.5rem] border border-garden-sage/10 shadow-xl shadow-garden-sage/5 relative overflow-hidden border-b-8 border-b-garden-sage">
           {/* Decorative background element */}
-          <div className="absolute -top-12 -right-12 w-32 h-32 bg-blue-50 rounded-full blur-3xl" />
+          <div className="absolute -top-12 -right-12 w-48 h-48 bg-garden-sage-light/50 rounded-full blur-3xl animate-pulse" />
           
           <div className="relative">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-              {goalBesar.nama}
-            </h1>
-            <p className="text-gray-500 mt-2 font-medium text-sm">
-              Target XP: <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md">{goalBesar.target_xp}</span>
-            </p>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-3xl">🌱</span>
+              <h1 className="text-3xl sm:text-4xl font-black text-garden-brown tracking-tight">
+                {goalBesar.nama}
+              </h1>
+            </div>
+            <div className="flex items-center gap-2 mt-4 mb-10">
+              <span className="text-sm font-bold text-garden-brown-light">Target XP:</span>
+              <span className="text-garden-sage bg-garden-sage-light px-4 py-1.5 rounded-full font-black text-sm border border-garden-sage/10 shadow-sm">
+                {goalBesar.target_xp} ✨
+              </span>
+            </div>
             
-            <div className="mt-6 max-w-md">
-              <div className="flex justify-between text-xs font-medium text-gray-600 mb-2">
-                <span>Progress</span>
-                <span className="text-blue-600">{goalBesar.progress || 0}% Selesai</span>
+            <div className="max-w-xl">
+              <div className="flex justify-between text-xs font-black text-garden-brown-light mb-3 px-1 uppercase tracking-widest">
+                <span>Total Progress</span>
+                <span className="text-garden-sage">{goalBesar.progress || 0}% Selesai ✨</span>
               </div>
-              <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
+              <div className="w-full bg-garden-sage-light rounded-full h-4 overflow-hidden shadow-inner">
                 <div
-                  className="bg-blue-500 h-2.5 rounded-full transition-all duration-500 relative"
+                  className="bg-gradient-to-r from-garden-sage to-green-400 h-4 rounded-full transition-all duration-1000 ease-out relative"
                   style={{ width: `${goalBesar.progress || 0}%` }}
                 >
                   <div className="absolute top-0 right-0 bottom-0 left-0 bg-white/20 w-full h-full transform -skew-x-12 translate-x-full"></div>
