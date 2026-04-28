@@ -51,6 +51,9 @@ export default function Navbar({ email }: NavbarProps) {
             <a href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
               Dashboard
             </a>
+            <a href="/today" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Hari Ini
+            </a>
             <a href="/goals" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
               Goals
             </a>

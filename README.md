@@ -10,6 +10,7 @@ Aplikasi habit tracker minimalis yang dibangun dengan **Next.js 14** (App Router
 - 📊 Dashboard dengan greeting & statistik
 - 🎯 **Manajemen Goal**: Tambah, pantau, dan hapus Goal Besar beserta langkah-langkah Goal Kecil
 - 📅 **Planner Harian**: Jadwalkan kegiatan harian, tagging dengan Goal Kecil
+- ✅ **Check-in Hari Ini**: Pantau rencana hari ini, tandai Selesai, atau Ganti rencana (Reality Checker), dengan notifikasi EXP otomatis
 - 🎨 UI minimalis terinspirasi Notion/Linear
 - 📱 Responsif (mobile-friendly)
 - 🚀 Siap deploy ke Netlify
@@ -79,9 +80,12 @@ src/
 │       └── [id]/
 │           ├── page.tsx     # Halaman Detail Goal (Server)
 │           └── GoalKecilList.tsx # List Goal Kecil (Client)
-│   └── planner/
-│       ├── page.tsx         # Halaman Planner (Server)
-│       └── PlannerClient.tsx # Komponen Interaktif Planner (Client)
+│   ├── planner/
+│   │   ├── page.tsx         # Halaman Planner (Server)
+│   │   └── PlannerClient.tsx # Komponen Interaktif Planner (Client)
+│   └── today/
+│       ├── page.tsx         # Halaman Hari Ini (Server)
+│       └── TodayClient.tsx  # Komponen Check-in Hari Ini (Client)
 ├── components/
 │   └── Navbar.tsx           # Navbar dengan menu & logout
 ├── middleware.ts            # Auth middleware
