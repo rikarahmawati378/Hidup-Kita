@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HidupKita — Habit Tracker
 
 Aplikasi habit tracker minimalis yang dibangun dengan **Next.js 14** (App Router), **Supabase Auth**, dan **Tailwind CSS**. Siap deploy ke **Netlify**.
@@ -94,3 +95,7 @@ Konfigurasi build sudah ada di `netlify.toml`.
 ## 📝 Lisensi
 
 MIT
+=======
+# Hidup-Kita
+Aplikasi Manajemen Hidup Suami Istri
+>>>>>>> 15c1b3c29a5c7d236ec4875b265301c801e76856
