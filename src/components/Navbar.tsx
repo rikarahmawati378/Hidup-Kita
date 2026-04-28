@@ -54,6 +54,9 @@ export default function Navbar({ email }: NavbarProps) {
             <a href="/goals" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
               Goals
             </a>
+            <a href="/planner" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Planner
+            </a>
           </div>
 
           {/* Right Side */}
