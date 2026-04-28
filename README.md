@@ -8,6 +8,7 @@ Aplikasi habit tracker minimalis yang dibangun dengan **Next.js 14** (App Router
 - 🔐 Autentikasi email/password via Supabase
 - 🛡️ Middleware proteksi rute (redirect otomatis ke login)
 - 📊 Dashboard dengan greeting & statistik
+- 🎯 **Manajemen Goal**: Tambah, pantau, dan hapus Goal Besar beserta langkah-langkah Goal Kecil
 - 🎨 UI minimalis terinspirasi Notion/Linear
 - 📱 Responsif (mobile-friendly)
 - 🚀 Siap deploy ke Netlify
@@ -68,11 +69,17 @@ src/
 │   ├── globals.css          # Global styles
 │   ├── layout.tsx           # Root layout (Inter font, metadata)
 │   ├── page.tsx             # Dashboard (protected)
-│   └── login/
-│       ├── layout.tsx       # Login metadata
-│       └── page.tsx         # Login form
+│   ├── login/
+│   │   ├── layout.tsx       # Login metadata
+│   │   └── page.tsx         # Login form
+│   └── goals/
+│       ├── page.tsx         # Halaman Daftar Goal Besar (Server)
+│       ├── GoalsList.tsx    # List Goal Besar (Client)
+│       └── [id]/
+│           ├── page.tsx     # Halaman Detail Goal (Server)
+│           └── GoalKecilList.tsx # List Goal Kecil (Client)
 ├── components/
-│   └── Navbar.tsx           # Navbar dengan logout
+│   └── Navbar.tsx           # Navbar dengan menu & logout
 ├── middleware.ts            # Auth middleware
 └── utils/
     └── supabase/

@@ -46,6 +46,16 @@ export default function Navbar({ email }: NavbarProps) {
             </span>
           </div>
 
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center space-x-8">
+            <a href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Dashboard
+            </a>
+            <a href="/goals" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              Goals
+            </a>
+          </div>
+
           {/* Right Side */}
           <div className="flex items-center gap-4">
             <span className="hidden sm:block text-sm text-gray-500 truncate max-w-[200px]">
