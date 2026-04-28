@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HidupKita — Habit Tracker
 
-## Getting Started
+Aplikasi habit tracker minimalis yang dibangun dengan **Next.js 14** (App Router), **Supabase Auth**, dan **Tailwind CSS**. Siap deploy ke **Netlify**.
 
-First, run the development server:
+## ✨ Fitur
+
+- 🔐 Autentikasi email/password via Supabase
+- 🛡️ Middleware proteksi rute (redirect otomatis ke login)
+- 📊 Dashboard dengan greeting & statistik
+- 🎨 UI minimalis terinspirasi Notion/Linear
+- 📱 Responsif (mobile-friendly)
+- 🚀 Siap deploy ke Netlify
+
+## 🛠️ Tech Stack
+
+| Teknologi | Kegunaan |
+|-----------|----------|
+| Next.js 14 | Framework React (App Router) |
+| Supabase | Autentikasi & Database |
+| Tailwind CSS | Styling |
+| @supabase/ssr | Manajemen session (cookie-based) |
+| @netlify/plugin-nextjs | Deploy ke Netlify |
+
+## 🚀 Cara Memulai
+
+### 1. Clone & Install
+
+```bash
+git clone <repo-url>
+cd hidup-kita
+npm install
+```
+
+### 2. Setup Environment Variables
+
+Salin file `.env.local.example` menjadi `.env.local` dan isi dengan kredensial Supabase Anda:
+
+```bash
+cp .env.local.example .env.local
+```
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+```
+
+### 3. Setup Supabase
+
+Pastikan Anda sudah:
+1. Membuat project di [supabase.com](https://supabase.com)
+2. Mengaktifkan **Email Auth** di Authentication > Providers
+3. Membuat user di Authentication > Users (atau via Sign Up)
+
+### 4. Jalankan Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000) di browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Struktur Proyek
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout (Inter font, metadata)
+│   ├── page.tsx             # Dashboard (protected)
+│   └── login/
+│       ├── layout.tsx       # Login metadata
+│       └── page.tsx         # Login form
+├── components/
+│   └── Navbar.tsx           # Navbar dengan logout
+├── middleware.ts            # Auth middleware
+└── utils/
+    └── supabase/
+        ├── client.ts        # Browser Supabase client
+        ├── server.ts        # Server Supabase client
+        └── middleware.ts    # Middleware session helper
+```
 
-## Learn More
+## 🌐 Deploy ke Netlify
 
-To learn more about Next.js, take a look at the following resources:
+1. Push kode ke GitHub/GitLab
+2. Hubungkan repo di [Netlify](https://app.netlify.com)
+3. Tambahkan environment variables di Netlify dashboard:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy otomatis!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Konfigurasi build sudah ada di `netlify.toml`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Lisensi
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
