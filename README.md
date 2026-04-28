@@ -11,6 +11,8 @@ Aplikasi habit tracker minimalis yang dibangun dengan **Next.js 14** (App Router
 - 🎯 **Manajemen Goal**: Tambah, pantau, dan hapus Goal Besar beserta langkah-langkah Goal Kecil
 - 📅 **Planner Harian**: Jadwalkan kegiatan harian, tagging dengan Goal Kecil
 - ✅ **Check-in Hari Ini**: Pantau rencana hari ini, tandai Selesai, atau Ganti rencana (Reality Checker), dengan notifikasi EXP otomatis
+- 👫 **Duo Dashboard**: Pantau progress EXP dan Level gabungan dari seluruh goal Anda dan juga Pasangan di satu tempat.
+- 📱 **Mobile-First Navigation**: Bottom Tab Bar khusus untuk HP agar navigasi lebih jempol-friendly.
 - 🎨 UI minimalis terinspirasi Notion/Linear
 - 📱 Responsif (mobile-friendly)
 - 🚀 Siap deploy ke Netlify
@@ -70,7 +72,10 @@ src/
 ├── app/
 │   ├── globals.css          # Global styles
 │   ├── layout.tsx           # Root layout (Inter font, metadata)
-│   ├── page.tsx             # Dashboard (protected)
+│   ├── page.tsx             # Root redirect to /dashboard
+│   ├── dashboard/
+│   │   ├── page.tsx         # Halaman Duo Dashboard (Server)
+│   │   └── DashboardClient.tsx # Komponen Progress Visual (Client)
 │   ├── login/
 │   │   ├── layout.tsx       # Login metadata
 │   │   └── page.tsx         # Login form
@@ -83,11 +88,14 @@ src/
 │   ├── planner/
 │   │   ├── page.tsx         # Halaman Planner (Server)
 │   │   └── PlannerClient.tsx # Komponen Interaktif Planner (Client)
-│   └── today/
+│       ├── today/
 │       ├── page.tsx         # Halaman Hari Ini (Server)
 │       └── TodayClient.tsx  # Komponen Check-in Hari Ini (Client)
 ├── components/
-│   └── Navbar.tsx           # Navbar dengan menu & logout
+│   ├── Navbar.tsx           # Navbar Desktop
+│   ├── BottomNav.tsx        # Navigasi Mobile (Bottom Tab)
+│   ├── LayoutWrapper.tsx    # Wrapper layout untuk padding mobile
+│   └── Toast.tsx            # (Opsional) Notifikasi EXP
 ├── middleware.ts            # Auth middleware
 └── utils/
     └── supabase/

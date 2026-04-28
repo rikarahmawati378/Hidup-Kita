@@ -48,7 +48,7 @@ export default function Navbar({ email }: NavbarProps) {
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            <a href="/dashboard" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
               Dashboard
             </a>
             <a href="/today" className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">

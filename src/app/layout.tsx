@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   keywords: ["habit tracker", "kebiasaan", "produktivitas", "HidupKita"],
 };
 
+import LayoutWrapper from "@/components/LayoutWrapper";
+import BottomNav from "@/components/BottomNav";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+        <LayoutWrapper>
+          {children}
+        </LayoutWrapper>
+        <BottomNav />
       </body>
     </html>
   );
