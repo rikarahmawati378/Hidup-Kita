@@ -22,8 +22,8 @@ export default async function TodayPage() {
   // Fetch all goal_kecil belonging to the user for the dropdown
   const { data: goalKecilList } = await supabase
     .from("goal_kecil")
-    .select("id, nama, goal_besar_id")
-    .eq("user_id", user.id)
+    .select("id, nama, goal_besar_id, xp_per_kegiatan, goal_besar!inner(user_id)")
+    .eq("goal_besar.user_id", user.id)
     .order("nama", { ascending: true });
 
   return (

@@ -7,6 +7,7 @@ export type GoalKecilDropdown = {
   id: string;
   nama: string;
   goal_besar_id: string;
+  xp_per_kegiatan: number;
 };
 
 export type Kegiatan = {
@@ -80,10 +81,16 @@ export default function PlannerClient({
     if (!jam || !deskripsi) return;
     setLoadingSubmit(true);
 
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      alert("Sesi berakhir, silakan login kembali.");
+      return;
+    }
+
     const { data, error } = await supabase
       .from("kegiatan")
       .insert({
-        user_id: userId,
+        user_id: user.id,
         tanggal: selectedDate,
         jam,
         deskripsi,

@@ -129,7 +129,6 @@ export default async function GoalDetailPage({
         <GoalKecilList
           initialData={goalKecilList || []}
           goalBesarId={params.id}
-          userId={user.id}
         />
       </main>
     </div>

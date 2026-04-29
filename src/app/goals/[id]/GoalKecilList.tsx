@@ -7,21 +7,20 @@ import { useRouter } from "next/navigation";
 export type GoalKecil = {
   id: string;
   goal_besar_id: string;
-  user_id: string;
   nama: string;
+  xp_per_kegiatan: number;
 };
 
 export default function GoalKecilList({
   initialData,
   goalBesarId,
-  userId,
 }: {
   initialData: GoalKecil[];
   goalBesarId: string;
-  userId: string;
 }) {
   const [goals, setGoals] = useState(initialData);
   const [nama, setNama] = useState("");
+  const [xp, setXp] = useState(50);
   const [loading, setLoading] = useState(false);
   const supabase = createClient();
   const router = useRouter();
@@ -33,13 +32,18 @@ export default function GoalKecilList({
 
     const { data, error } = await supabase
       .from("goal_kecil")
-      .insert({ user_id: userId, goal_besar_id: goalBesarId, nama })
+      .insert({ 
+        goal_besar_id: goalBesarId, 
+        nama,
+        xp_per_kegiatan: xp
+      })
       .select()
       .single();
 
     if (!error && data) {
       setGoals([...goals, data]);
       setNama("");
+      setXp(50);
       router.refresh();
     } else {
       console.error(error);
@@ -63,19 +67,36 @@ export default function GoalKecilList({
       </h2>
 
       {/* Form Tambah Goal Kecil */}
-      <form onSubmit={handleAdd} className="mb-10 flex flex-col sm:flex-row gap-4">
-        <input
-          type="text"
-          value={nama}
-          onChange={(e) => setNama(e.target.value)}
-          placeholder="Tulis langkah kecil untuk mencapai goal ini..."
-          required
-          className="flex-1 px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
-        />
+      <form onSubmit={handleAdd} className="mb-10 flex flex-col gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex-[3]">
+            <label className="block text-xs font-bold text-garden-brown mb-2 ml-1">Nama Langkah Kecil</label>
+            <input
+              type="text"
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
+              placeholder="Tulis langkah kecil..."
+              required
+              className="w-full px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block text-xs font-bold text-garden-brown mb-2 ml-1">EXP</label>
+            <input
+              type="number"
+              value={xp}
+              onChange={(e) => setXp(parseInt(e.target.value))}
+              min="1"
+              max="1000"
+              required
+              className="w-full px-5 py-3 rounded-2xl border border-garden-sage/30 bg-garden-sage-light/30 text-garden-brown text-sm focus:outline-none focus:ring-2 focus:ring-garden-sage/20 focus:border-garden-sage focus:bg-white transition-all shadow-inner"
+            />
+          </div>
+        </div>
         <button
           type="submit"
           disabled={loading || !nama.trim()}
-          className="px-8 py-3 rounded-2xl bg-garden-sage text-white text-sm font-bold hover:bg-green-700 disabled:opacity-50 transition-all whitespace-nowrap shadow-md shadow-garden-sage/20 transform hover:scale-[1.02] active:scale-[0.98]"
+          className="w-full sm:w-auto self-end px-8 py-3 rounded-2xl bg-garden-sage text-white text-sm font-bold hover:bg-green-700 disabled:opacity-50 transition-all whitespace-nowrap shadow-md shadow-garden-sage/20 transform hover:scale-[1.02] active:scale-[0.98]"
         >
           {loading ? "Menambah..." : "Tambah Misi ✨"}
         </button>
@@ -92,7 +113,10 @@ export default function GoalKecilList({
               <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-garden-sage text-xs font-black shadow-sm border border-garden-sage/10">
                 {index + 1}
               </span>
-              <span className="text-garden-brown font-semibold text-sm sm:text-base">{goal.nama}</span>
+              <div className="flex flex-col">
+                <span className="text-garden-brown font-bold text-sm sm:text-base">{goal.nama}</span>
+                <span className="text-xs font-bold text-garden-sage">🏆 {goal.xp_per_kegiatan} XP</span>
+              </div>
             </div>
             <button
               onClick={() => handleDelete(goal.id)}

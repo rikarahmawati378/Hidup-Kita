@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description:
     "HidupKita adalah aplikasi habit tracker untuk membantu Anda membangun kebiasaan positif setiap hari.",
   keywords: ["habit tracker", "kebiasaan", "produktivitas", "HidupKita"],
+  icons: {
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>",
+    shortcut: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>",
+    apple: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>",
+  },
 };
 
 import LayoutWrapper from "@/components/LayoutWrapper";

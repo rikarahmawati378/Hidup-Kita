@@ -8,6 +8,7 @@ export type GoalKecilDropdown = {
   id: string;
   nama: string;
   goal_besar_id: string;
+  xp_per_kegiatan: number;
 };
 
 export type Kegiatan = {
@@ -120,6 +121,12 @@ export default function TodayClient({
   const handleSelesai = async (keg: Kegiatan) => {
     setSubmittingId(keg.id);
 
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      alert("Sesi berakhir, silakan login kembali.");
+      return;
+    }
+
     // Update db
     const { error } = await supabase
       .from("kegiatan")
@@ -180,11 +187,17 @@ export default function TodayClient({
     setSubmittingId(keg.id);
     const form = replaceForms[keg.id];
 
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      alert("Sesi berakhir, silakan login kembali.");
+      return;
+    }
+
     // Insert kegiatan baru
     const { data: newKeg, error: insertError } = await supabase
       .from("kegiatan")
       .insert({
-        user_id: userId,
+        user_id: user.id,
         tanggal: todayStr,
         jam: form.jam,
         deskripsi: form.deskripsi,
